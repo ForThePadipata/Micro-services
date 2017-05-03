@@ -1,4 +1,4 @@
-package com.github.origin.Hystrix;
+package com.github.origin.fallback;
 
 import com.github.origin.service.ComputeClient;
 import org.springframework.stereotype.Component;
