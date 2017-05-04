@@ -1,4 +1,4 @@
-package com.github.origin.controller;
+package com.github.origin.service.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
