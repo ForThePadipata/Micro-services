@@ -1,6 +1,6 @@
-package com.github.origin.fallback;
+package com.github.origin.web.manage.fallback;
 
-import com.github.origin.service.ComputeClient;
+import com.github.origin.web.manage.service.ComputeClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
 

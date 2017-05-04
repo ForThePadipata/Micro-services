@@ -1,6 +1,6 @@
-package com.github.origin.Controller;
+package com.github.origin.web.manage.controller;
 
-import com.github.origin.service.ComputeClient;
+import com.github.origin.web.manage.service.ComputeClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

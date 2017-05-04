@@ -1,4 +1,4 @@
-package com.github.origin.Controller;
+package com.github.origin.web.manage.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
