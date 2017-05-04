@@ -1,6 +1,6 @@
 package com.github.origin.web.manage.service;
 
-import com.github.origin.fallback.ComputeClientHystrix;
+import com.github.origin.web.manage.fallback.ComputeClientHystrix;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

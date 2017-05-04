@@ -15,7 +15,7 @@ public class HellowController {
 
 		map.addAttribute("host", "http://www.oright.com");
 
-		return "index";
+		return "login";
 	}
 
 }
