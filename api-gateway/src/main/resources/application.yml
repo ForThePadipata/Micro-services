@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 5555
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+  instance:
+      prefer-ip-address: true
+
+
+# routes to url
+# zuul.routes.api-a-url.path=/api-a-url/**
+# zuul.routes.api-a-url.url=http://localhost:2222/
+
+
+zuul:
+#  ignoredServices: '*' 需要忽略的服务
+  routes:
+    users:
+      path: /myusers/**    #来自/myusers的http请求被转发到service-A这个服务上
+      serviceId: service-A
+    order:
+      path: /order/**
+# zuul.routes.api-b.path=/api-b/**
+# zuul.routes.api-b.serviceId=service-B
+
