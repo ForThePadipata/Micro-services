@@ -1,8 +1,12 @@
-server.port=1111
+server:
+  port: 1111
 
-eureka.client.register-with-eureka=false
-eureka.client.fetch-registry=false
-eureka.client.serviceUrl.defaultZone=http://localhost:${server.port}/eureka/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:${server.port}/eureka/
+    fetch-registry: false
+    register-with-eureka: false
 # 设为false，关闭自我保护
 #eureka.server.enable-self-preservation=false
 # 自动清理无效服务间隔（单位毫秒，默认是60*1000）
@@ -13,10 +17,13 @@ eureka.client.serviceUrl.defaultZone=http://localhost:${server.port}/eureka/
 #eureka.instance.lease-renewal-interval-in-seconds
 # 续约到期时间（默认90秒）
 #eureka.instance.lease-expiration-duration-in-seconds
-#
-spring.cloud.config.name=config-server
-#
-spring.cloud.config.uri=http://localhost:7001/
+#配置中心地址
+spring:
+  cloud:
+    config:
+      name: config-server
+      uri: http://localhost:7001/
+
 
 
 

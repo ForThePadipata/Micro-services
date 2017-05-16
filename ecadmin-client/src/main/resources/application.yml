@@ -1,32 +1,51 @@
+server:
+  port: 3333
+spring:
+  application:
+    name: ecadmin-client
+  thymeleaf:
+    prefix: classpath:/static/H-ui/ # 指定模板文件路径
+    cache: true
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    mode: HTML5
+    suffix: .html
 
-spring.application.name=ecadmin-client
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
 
-server.port=3333
-
-eureka.client.serviceUrl.defaultZone=http://localhost:1111/eureka/
-# 指定模板文件路径
 #spring.thymeleaf.prefix=classpath:/templates/
-spring.thymeleaf.prefix=classpath:/static/H-ui/
+
 # Enable template caching.
-spring.thymeleaf.cache=true
+
 # Check that the templates location exists.
-spring.thymeleaf.check-template-location=true
+
 # Content-Type value.
-spring.thymeleaf.content-type=text/html
+
 # Enable MVC Thymeleaf view resolution.
-spring.thymeleaf.enabled=true
+
 # Template encoding.
-spring.thymeleaf.encoding=UTF-8
+
 # Comma-separated list of view names that should be excluded from resolution.
 # spring.thymeleaf.excluded-view-names=
 # Template mode to be applied to templates. See also StandardTemplateModeHandlers.
-spring.thymeleaf.mode=HTML5
+
 # Prefix that gets prepended to view names when building a URL.
 
 # Suffix that gets appended to view names when building a URL.
-spring.thymeleaf.suffix=.html
+
 #
 # spring.thymeleaf.template-resolver-order=
 # Order of the template resolver in the chain. spring.thymeleaf.view-names= # Comma-separated list of view names that can be resolved.
-#禁用远程调用超时
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=999999999
+#hystrix远程调用超时时间设置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 999999999

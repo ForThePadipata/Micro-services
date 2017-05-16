@@ -1,0 +1,21 @@
+server:
+  port: 8999
+spring:
+  application:
+    name: ec-monitoring
+
+#logging.level.org.springframework.cloud=INFO
+
+turbine:
+  aggregator:
+    cluster-config: default
+  turbine:
+    app-config: compute-service
+# instance-url-suffix: /hystrix.stream
+
+eureka:
+  client:
+      serviceUrl:
+        defaultZone: http://localhost:1111/eureka/
+  instance:
+    prefer-ip-address: true
