@@ -1,0 +1,44 @@
+# 对应前配置文件中的{application}部分
+spring:
+  application:
+    name: confspace
+# 客户端接口
+server:
+  port: 7003
+# 服务注册中心
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+  # 在注册中心显示IP
+  instance:
+    preferIpAddress: true
+    # 在注册中心中显示的格式
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+
+# 配置文件格式
+#URL与配置文件的映射关系如下：
+#/{application}/{profile}[/{label}]
+#/{application}-{profile}.yml
+#/{label}/{application}-{profile}.yml
+#/{application}-{profile}.properties
+#/{label}/{application}-{profile}.properties
+
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config-server
+      profile: dev
+      failFast: true
+
+#spring:
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: ob_zhu
+#    password: 123456
+
+
+
