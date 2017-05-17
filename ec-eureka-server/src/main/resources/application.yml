@@ -7,10 +7,10 @@ eureka:
       defaultZone: http://localhost:${server.port}/eureka/
     fetch-registry: false
     register-with-eureka: false
-# 设为false，关闭自我保护
-#eureka.server.enable-self-preservation=false
-# 自动清理无效服务间隔（单位毫秒，默认是60*1000）
-#eureka.server.eviction-interval-timer-in-ms=4000
+  server:
+    enable-self-preservation: false # 设为false，关闭自我保护
+    eviction-interval-timer-in-ms: 4000 # 自动清理无效服务间隔（单位毫秒，默认是60*1000）
+
 # 开启健康检查（需要spring-boot-starter-actuator依赖）
 #eureka.client.healthcheck.enabled
 # 续约更新时间间隔（默认30秒）

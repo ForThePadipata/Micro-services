@@ -1,4 +1,7 @@
 
+server:
+  port: 2224
+
 spring:
   application:
     name: compute-service
@@ -6,9 +9,10 @@ spring:
     config:
       name: config-server
       uri: http://localhost:7001/
+  zipkin:
+    baseUrl: http://localhost:8091/
+    enabled: true
 
-server:
-  port: 2224
 
 eureka:
   client:

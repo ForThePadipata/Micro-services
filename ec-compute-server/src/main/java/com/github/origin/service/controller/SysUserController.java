@@ -6,10 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Zhu on 2017/5/4.
@@ -23,7 +20,7 @@ public class SysUserController {
 	private DiscoveryClient client;
 
 	@RequestMapping(value = "/findSysUser", method = RequestMethod.POST)
-	public CommonModel add(SysUserDO sysUserDO){
+	public CommonModel findSysUser(@RequestBody SysUserDO sysUserDO){
 
 		CommonModel cm = new CommonModel();
 		SysUserDO sud = new SysUserDO();
