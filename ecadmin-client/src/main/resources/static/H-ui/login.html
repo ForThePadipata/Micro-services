@@ -24,7 +24,7 @@
 <div class="header"></div>
 <div class="loginWraper">
 	<div id="loginform" class="loginBox">
-		<form id="sysLoginForm" class="form form-horizontal" action="" method="post">
+		<form id="sysLoginForm" class="form form-horizontal" action="index.html" method="post">
 			<div class="row cl">
 				<label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
 				<div class="formControls col-xs-8">
@@ -70,13 +70,12 @@
 <script type="text/javascript" >
 	$(document).ready(function() {
 
-		$("#sysLoginForm").submit(function() {
+		$("#sysLoginForm").submit(function(e) {
 
 			if($("#username").val()==''){
 				alert("用户名不能为空！");
 				return false;
 			}
-			var data;
 			$.ajax({
 				url: "/login",
 				async: false,
@@ -87,6 +86,10 @@
 					} else {
 						$("#myDiv").text(returnData.errorMessage);
 					}
+                    if(null == returnData.dataObject){
+                        e.preventDefault();
+                    }
+
 				}
 			});
 

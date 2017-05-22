@@ -11,11 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HellowController {
 
 	@RequestMapping("/")
-	public String index(ModelMap map){
+	public String welcome(ModelMap map){
 
 		map.addAttribute("host", "http://www.oright.com");
 
 		return "login";
+	}
+
+	@RequestMapping("/index")
+	public String index(ModelMap map){
+
+		return "index";
 	}
 
 }

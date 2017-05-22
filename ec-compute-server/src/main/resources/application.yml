@@ -17,7 +17,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://user:password123@localhost:1111/eureka/
   # 在注册中心显示IP
   instance:
     preferIpAddress: true
