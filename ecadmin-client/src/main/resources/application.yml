@@ -12,12 +12,19 @@ spring:
     encoding: UTF-8
     mode: HTML5
     suffix: .html
-
 eureka:
   client:
     serviceUrl:
       defaultZone: http://user:password123@localhost:1111/eureka/
-
+#开启Feign对请求与响应进行GZIP压缩，减少通信性能损耗
+feign:
+  compression:
+    reqest:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
 #spring.thymeleaf.prefix=classpath:/templates/
 
 # Enable template caching.
@@ -41,7 +48,7 @@ eureka:
 #
 # spring.thymeleaf.template-resolver-order=
 # Order of the template resolver in the chain. spring.thymeleaf.view-names= # Comma-separated list of view names that can be resolved.
-#hystrix远程调用超时时间设置
+#hystrix远程调用全局超时时间设置
 hystrix:
   command:
     default:
@@ -49,6 +56,24 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 5000
-
+#全局Ribbon客户端调用超时设置
+#ribbon:
+#  ConnectTimeout: 500 #请求链接超时时间
+#  ReadTimeout: 5000  #请求处理超时时间
+#指定服务超时设置
+compute-service:
+  ribbon:
+    ConnectTimeout: 500
+    ReadTimeout: 5000
+#开启指定Feign客户端的DEBUG日志
+logging:
+  level:
+    com:
+      github:
+        origin:
+          web:
+            manage:
+              service:
+                SysUserClient: DEBUG
 
 

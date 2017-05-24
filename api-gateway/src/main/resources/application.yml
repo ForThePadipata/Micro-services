@@ -19,13 +19,16 @@ eureka:
 
 
 zuul:
+  addHostHeader: true #标识最初的服务端请求地址
 #  ignoredServices: '*' 需要忽略的服务
   routes:
     users:
       path: /myusers/**    #来自/myusers的http请求被转发到service-A这个服务上
       serviceId: service-A
+      customSensitiveHeaders: true #对指定路由开启自定义敏感头
     order:
       path: /order/**
+      sensitiveHeaders: #对指定路由的敏感头设置为空
 # zuul.routes.api-b.path=/api-b/**
 # zuul.routes.api-b.serviceId=service-B
 
