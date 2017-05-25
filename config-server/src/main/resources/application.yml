@@ -25,7 +25,8 @@ spring:
           searchPaths: config-repo # 配置仓库路径下的相对搜索位置，可以配置多个
           username: zhuguidongChina # 访问git仓库的用户名
           password: Zhuguidong@008 # 访问git仓库的用户密码
-
+        health:
+          enabled: false #关闭健康检查器
 # 使用本地配置文件
 # spring.profiles.active=native
 # 本地配置文件地址

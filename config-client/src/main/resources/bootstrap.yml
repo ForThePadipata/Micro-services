@@ -31,7 +31,10 @@ spring:
         enabled: true
         serviceId: config-server
       profile: dev
-      failFast: true
+      failFast: true #失败快速响应 减少预加载时间
+    bus:
+      trace:
+        enable: true #开启trace事件追踪
 
 #spring:
 #  rabbitmq:
