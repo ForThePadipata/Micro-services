@@ -1,29 +1,33 @@
-
 server:
   port: 2224
-
 spring:
   application:
-    name: compute-service
+    name: ec-compute-service
   cloud:
     config:
       name: config-server
       uri: http://localhost:7001/
-  zipkin:
-    baseUrl: http://localhost:8091/
-    enabled: true
-
-
+#  zipkin:
+#    baseUrl: http://localhost:8091/
+#    enabled: true
+  rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://user:password123@localhost:1111/eureka/
+      defaultZone: http://admin:123@localhost:1111/eureka/
   # 在注册中心显示IP
   instance:
     preferIpAddress: true
     # 在注册中心中显示的格式
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
-
+hystrix:
+  config:
+    stream:
+      maxConcurrentConnections: 50
 # 开启健康检查（需要spring-boot-starter-actuator依赖）
 #eureka.client.healthcheck.enabled=true
 # 续约更新时间间隔（默认30秒）
@@ -31,10 +35,6 @@ eureka:
 # 续约到期时间（默认90秒）
 #eureka.instance.lease-expiration-duration-in-seconds=10
 
-hystrix:
-  config:
-    stream:
-      maxConcurrentConnections: 50
 
 
 

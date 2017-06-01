@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Created by Zhu on 2017/5/3.
  */
-@FeignClient(value = "compute-service", fallback = SysUserClientHystrix.class)
+@FeignClient(value = "ec-compute-service", fallback = SysUserClientHystrix.class)
 public interface SysUserClient {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/findSysUser")

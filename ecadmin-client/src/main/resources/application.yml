@@ -12,10 +12,20 @@ spring:
     encoding: UTF-8
     mode: HTML5
     suffix: .html
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://user:password123@localhost:1111/eureka/
+      defaultZone: http://admin:123@localhost:1111/eureka/
+ # 在注册中心显示IP
+  instance:
+    preferIpAddress: true
+    # 在注册中心中显示的格式
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
 #开启Feign对请求与响应进行GZIP压缩，减少通信性能损耗
 feign:
   compression:
@@ -25,6 +35,29 @@ feign:
       min-request-size: 2048
     response:
       enabled: true
+#hystrix远程调用全局超时时间设置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 7000
+#开启指定Feign客户端的DEBUG日志
+logging:
+  level:
+    com:
+      github:
+        origin:
+          web:
+            manage:
+              service:
+                SysUserClient: DEBUG
+#指定服务超时设置
+compute-service:
+  ribbon:
+    ConnectTimeout: 50000
+    ReadTimeout: 50000
 #spring.thymeleaf.prefix=classpath:/templates/
 
 # Enable template caching.
@@ -48,32 +81,12 @@ feign:
 #
 # spring.thymeleaf.template-resolver-order=
 # Order of the template resolver in the chain. spring.thymeleaf.view-names= # Comma-separated list of view names that can be resolved.
-#hystrix远程调用全局超时时间设置
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 5000
+
 #全局Ribbon客户端调用超时设置
 #ribbon:
 #  ConnectTimeout: 500 #请求链接超时时间
 #  ReadTimeout: 5000  #请求处理超时时间
-#指定服务超时设置
-compute-service:
-  ribbon:
-    ConnectTimeout: 500
-    ReadTimeout: 5000
-#开启指定Feign客户端的DEBUG日志
-logging:
-  level:
-    com:
-      github:
-        origin:
-          web:
-            manage:
-              service:
-                SysUserClient: DEBUG
+
+
 
 
