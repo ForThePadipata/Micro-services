@@ -20,3 +20,5 @@ ec-monitoring/target/
 ecadmin-client/target/
 
 padipata-ec-sleuth-zipkin/target/
+
+*.log
