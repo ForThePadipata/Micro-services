@@ -8,7 +8,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://admin:123@localhost:1111/eureka/
   instance:
       prefer-ip-address: true
 
@@ -20,15 +20,29 @@ eureka:
 
 zuul:
   addHostHeader: true #标识最初的服务端请求地址
-#  ignoredServices: '*' 需要忽略的服务
+  ignoredServices: '*' #需要忽略的服务
   routes:
-    users:
-      path: /myusers/**    #来自/myusers的http请求被转发到service-A这个服务上
-      serviceId: service-A
+    user:
+      path: /user/**    #来自/user的http请求被转发到ec-user-client这个服务上
+      serviceId: ec-user-client
       customSensitiveHeaders: true #对指定路由开启自定义敏感头
     order:
       path: /order/**
       sensitiveHeaders: #对指定路由的敏感头设置为空
+  AccessFilter:
+    pre:
+      disable: true #禁用过滤器
 # zuul.routes.api-b.path=/api-b/**
 # zuul.routes.api-b.serviceId=service-B
 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000

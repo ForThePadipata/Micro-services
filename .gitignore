@@ -22,3 +22,7 @@ ecadmin-client/target/
 padipata-ec-sleuth-zipkin/target/
 
 *.log
+
+ec-user-client/target/
+
+ec-user-server/target/

@@ -1,0 +1,45 @@
+server:
+  port: 8333
+spring:
+  application:
+    name: ec-user-client
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123@localhost:1111/eureka/
+ # 在注册中心显示IP
+  instance:
+    preferIpAddress: true
+    # 在注册中心中显示的格式
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+#开启Feign对请求与响应进行GZIP压缩，减少通信性能损耗
+feign:
+  compression:
+    reqest:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+#hystrix远程调用全局超时时间设置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 7000
+#开启指定Feign客户端的DEBUG日志
+logging:
+  level:
+    com:
+      github:
+        origin:
+          client:
+            service:
+              UserClient: DEBUG
+#指定服务超时设置
+ec-user-server:
+  ribbon:
+    ConnectTimeout: 50000
+    ReadTimeout: 50000
