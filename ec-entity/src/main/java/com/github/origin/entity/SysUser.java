@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by Zhu on 2017/5/3.
  */
-public class SysUserDO {
+public class SysUser {
 
 	private int id;
 

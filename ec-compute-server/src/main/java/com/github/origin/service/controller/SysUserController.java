@@ -1,10 +1,9 @@
 package com.github.origin.service.controller;
 
 import com.github.origin.common.CommonModel;
-import com.github.origin.entity.SysUserDO;
+import com.github.origin.entity.SysUser;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,14 +19,14 @@ public class SysUserController {
 	private DiscoveryClient client;
 
 	@RequestMapping(value = "/findSysUser", method = RequestMethod.POST)
-	public CommonModel findSysUser(@RequestBody SysUserDO sysUserDO){
+	public CommonModel findSysUser(@RequestBody SysUser sysUser){
 
 		CommonModel cm = new CommonModel();
-		SysUserDO sud = new SysUserDO();
+		SysUser sud = new SysUser();
 		sud.setSysUserName("admin");
 		sud.setSysPassword("123");
 
-		if(sud.getSysUserName().equals(sysUserDO.getSysUserName()) && sud.getSysPassword().equals(sysUserDO.getSysPassword())){
+		if(sud.getSysUserName().equals(sysUser.getSysUserName()) && sud.getSysPassword().equals(sysUser.getSysPassword())){
 			cm.setDataObject(sud);
 		}else{
 			cm.setErrorCode("-100001");
