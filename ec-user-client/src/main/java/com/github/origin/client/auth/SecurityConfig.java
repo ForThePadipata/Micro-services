@@ -1,6 +1,8 @@
 package com.github.origin.client.auth;
 
+import com.github.origin.client.auth.filter.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -11,6 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * Created by Zhu on 2017/6/7.
@@ -59,15 +62,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/**/*.js"
 				).permitAll()
 				//对于获取token的rest api要允许匿名访问
-				.antMatchers().permitAll()
+				.antMatchers("/auth/**").permitAll()
 				//除上面外的所有请求全部需要鉴权认证
 				.anyRequest().authenticated();
+		//添加JWT filter
+		http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 
 		//禁用缓存
 		http.headers().cacheControl();
 	}
 
-
+	@Bean
+	public JwtAuthenticationTokenFilter authenticationTokenFilterBean() throws Exception {
+		return new JwtAuthenticationTokenFilter();
+	}
 
 
 

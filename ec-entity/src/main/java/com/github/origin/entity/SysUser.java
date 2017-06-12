@@ -33,6 +33,9 @@ public class SysUser {
 
 	private String delFlag;
 
+	public SysUser() {
+	}
+
 	public int getId() {
 		return id;
 	}

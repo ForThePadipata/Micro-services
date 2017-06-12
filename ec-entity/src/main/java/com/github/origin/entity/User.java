@@ -17,6 +17,9 @@ public class User {
 
 	private List<String> roles;
 
+	public User() {
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -19,5 +19,21 @@ public class UserClientHystrix implements UserClient{
 		return cm;
 	}
 
+	@Override
+	public CommonModel findUserByUsername(String username) {
+		CommonModel cm = new CommonModel();
+		cm.setErrorCode("-100000");
+		cm.setErrorMessage("调用远程接口失败");
+		return cm;
+	}
+
+
+	@Override
+	public CommonModel regist(User user) {
+		CommonModel cm = new CommonModel();
+		cm.setErrorCode("-100000");
+		cm.setErrorMessage("调用远程接口失败");
+		return cm;
+	}
 
 }

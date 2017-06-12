@@ -44,4 +44,13 @@ public class UserBaseController {
 		return commonModel;
 	}
 
+	@RequestMapping(value = "/regist", method = RequestMethod.POST)
+	public CommonModel regist(User user) {
+		System.out.println("请求成功");
+
+		CommonModel commonModel = userClient.regist(user);
+
+		return commonModel;
+	}
+
 }

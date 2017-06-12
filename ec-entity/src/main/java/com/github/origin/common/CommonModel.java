@@ -15,6 +15,9 @@ public class CommonModel {
 
 	private String errorMessage;
 
+	public CommonModel() {
+	}
+
 	public Object getDataObject() {
 		return dataObject;
 	}
