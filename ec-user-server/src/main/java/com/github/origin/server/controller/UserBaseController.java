@@ -44,16 +44,16 @@ public class UserBaseController {
 
 
 	@RequestMapping(value = "/findUserByUsername", method = RequestMethod.POST)
-	public CommonModel findUserByUsername(@RequestBody String username){
+	public CommonModel<User> findUserByUsername(@RequestBody String username){
 
-		CommonModel cm = new CommonModel();
+		CommonModel<User> cm = new CommonModel<User>();
 		User ud = new User();
 		ud.setUsername(username);
-		ud.setPassword("$2a$10$5x4RgCbQ5fO/1FOk4gxxpO5nBkGyAt5Xqm/GUKOOh4c9Qz8FIgdQy");
+		ud.setPassword("123123");
 		ud.setUserNo("88888888");
 		List<String> roleList = new ArrayList<String>();
-		roleList.add("ADMIN");
-		roleList.add("USER");
+		roleList.add("ROLE_ADMIN");
+		roleList.add("ROLE_USER");
 		ud.setRoles(roleList);
 		cm.setDataObject(ud);
 
@@ -62,16 +62,16 @@ public class UserBaseController {
 
 
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
-	public CommonModel regist(@RequestBody User user){
+	public CommonModel<User> regist(@RequestBody User user){
 
-		CommonModel cm = new CommonModel();
+		CommonModel<User> cm = new CommonModel<User>();
 		User ud = new User();
 		ud.setUsername("TEST");
-		ud.setPassword("$2a$10$5x4RgCbQ5fO/1FOk4gxxpO5nBkGyAt5Xqm/GUKOOh4c9Qz8FIgdQy");//123123
+		ud.setPassword("123123");
 		ud.setUserNo("88888888");
 		List<String> roleList = new ArrayList<String>();
-		roleList.add("ADMIN");
-		roleList.add("USER");
+		roleList.add("ROLE_ADMIN");
+		roleList.add("ROLE_USER");
 		ud.setRoles(roleList);
 		cm.setDataObject(ud);
 

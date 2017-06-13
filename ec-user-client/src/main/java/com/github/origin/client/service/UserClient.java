@@ -17,9 +17,9 @@ public interface UserClient {
 	CommonModel userLogin(User user);
 
 	@RequestMapping(method = RequestMethod.POST, value = "/findUserByUsername")
-	CommonModel findUserByUsername(String username);
+	CommonModel<User> findUserByUsername(String username);
 
 	@RequestMapping(method = RequestMethod.POST, value = "/regist")
-	CommonModel regist(User user);
+	CommonModel<User> regist(User user);
 
 }

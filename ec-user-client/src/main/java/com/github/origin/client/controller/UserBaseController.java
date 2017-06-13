@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by Zhu on 2017/6/5.
  */
@@ -35,7 +37,8 @@ public class UserBaseController {
 		return commonModel;
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('ADMIN')") 这种写法可以忽略"ROLE_"这段字符串 但是后台存储的格式还是"ROLE_ADMIN"
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public CommonModel deleteUser(@PathVariable("id") String id){
 		System.out.println("请求成功");
@@ -48,7 +51,9 @@ public class UserBaseController {
 	public CommonModel regist(User user) {
 		System.out.println("请求成功");
 
-		CommonModel commonModel = userClient.regist(user);
+		CommonModel<User> commonModel = userClient.regist(user);
+
+		User regUser = (User)commonModel.getDataObject();
 
 		return commonModel;
 	}

@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Zhu on 2017/6/9.
  */
@@ -22,7 +24,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		CommonModel cm = userClient.findUserByUsername(username);
+		CommonModel<User> cm = userClient.findUserByUsername(username);
 
 		User user = (User)cm.getDataObject();
 

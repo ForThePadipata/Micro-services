@@ -15,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static java.util.Arrays.asList;
 
 /**
@@ -62,15 +64,16 @@ public class AuthServiceImpl implements AuthService {
 		//userToAdd.setLastPasswordResetDate(new Date());
 		userToAdd.setRoles(asList("ROLE_USER"));
 
-//		CommonModel cm = userClient.regist(userToAdd);
-//
-//		User user = (User)cm.getDataObject();
-		return userToAdd;
+		CommonModel<User> cm = userClient.regist(userToAdd);
+
+		User user = (User)cm.getDataObject();
+		return user;
 	}
 
 	@Override
 	public String login(String username, String password) throws Exception{
-		UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(username, password);
+		UsernamePasswordAuthenticationToken upToken =
+				new UsernamePasswordAuthenticationToken(username, password);
 		//登陆验证时，通过username获取用户的所有权限信息，
 		//并返回User放到spring的全局缓存SecurityContextHolder中，以供授权器使用
 		final Authentication authentication = authenticationManager.authenticate(upToken);

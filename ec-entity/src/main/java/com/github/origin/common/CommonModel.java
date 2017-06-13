@@ -1,15 +1,14 @@
 package com.github.origin.common;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Zhu on 2017/5/4.
  */
-public class CommonModel {
+public class CommonModel<T> implements Serializable {
 
-	private Object dataObject;
-
-	private List<Object> dataList;
+	private T dataObject;
 
 	private String errorCode;
 
@@ -18,20 +17,12 @@ public class CommonModel {
 	public CommonModel() {
 	}
 
-	public Object getDataObject() {
+	public T getDataObject() {
 		return dataObject;
 	}
 
-	public void setDataObject(Object dataObject) {
+	public void setDataObject(T dataObject) {
 		this.dataObject = dataObject;
-	}
-
-	public List<Object> getDataList() {
-		return dataList;
-	}
-
-	public void setDataList(List<Object> dataList) {
-		this.dataList = dataList;
 	}
 
 	public String getErrorCode() {

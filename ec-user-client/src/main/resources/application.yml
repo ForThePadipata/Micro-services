@@ -38,6 +38,9 @@ logging:
           client:
             service:
               UserClient: DEBUG
+    org:
+      springframework:
+        web: DEBUG
 #指定服务超时设置
 ec-user-server:
   ribbon:
@@ -54,5 +57,7 @@ jwt:
       path: auth
       refresh: refresh
       register: "auth/register"
+
+
 
 
