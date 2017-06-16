@@ -49,7 +49,7 @@ public class UserBaseController {
 		CommonModel<User> cm = new CommonModel<User>();
 		User ud = new User();
 		ud.setUsername(username);
-		ud.setPassword("123123");
+		ud.setPassword("$2a$10$h58Dp653DsUlKOD7CgauM.9CEzC/XUW2SgH/uIlzf7GyqgzspJ5wa");
 		ud.setUserNo("88888888");
 		List<String> roleList = new ArrayList<String>();
 		roleList.add("ROLE_ADMIN");
@@ -66,8 +66,8 @@ public class UserBaseController {
 
 		CommonModel<User> cm = new CommonModel<User>();
 		User ud = new User();
-		ud.setUsername("TEST");
-		ud.setPassword("123123");
+		ud.setUsername(user.getUsername());
+		ud.setPassword(user.getPassword());
 		ud.setUserNo("88888888");
 		List<String> roleList = new ArrayList<String>();
 		roleList.add("ROLE_ADMIN");

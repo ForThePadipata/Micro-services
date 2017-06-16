@@ -3,6 +3,7 @@ package com.github.origin.client.auth;
 import com.github.origin.client.auth.filter.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -18,28 +19,45 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 /**
  * Created by Zhu on 2017/6/7.
  */
+@Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true) //启用方法安全设置
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+	private JwtAuthenticationEntryPoint unauthorizedHandler;
 
 	//Spring会自动寻找同样类型的具体类注入, 这里就是JwtUserDetailsservice了
 	@Autowired
 	private UserDetailsService userDetailsService;
 
-	public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder)
-		throws Exception {
+	@Autowired
+	public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 		authenticationManagerBuilder
 				// 设置UserDetailsService
 				.userDetailsService(this.userDetailsService)
 				// 使用BCrypt进行密码的hash
 				.passwordEncoder(passwordEncoder());
 
-
 	}
 
-	@Autowired
+	/**
+	 * 设置Spring Secuirty使用的密码加密方式
+	 * @return
+	 */
+	@Bean
 	public PasswordEncoder passwordEncoder(){
 		return new BCryptPasswordEncoder();
+	}
+
+	/**
+	 * 使用自定义过滤器
+	 * @return
+	 * @throws Exception
+	 */
+	@Bean
+	public JwtAuthenticationTokenFilter authenticationTokenFilterBean() throws Exception {
+		return new JwtAuthenticationTokenFilter();
 	}
 
 
@@ -62,7 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/**/*.js"
 				).permitAll()
 				//对于获取token的rest api要允许匿名访问
-				.antMatchers("/auth","/auth/**").permitAll()
+				.antMatchers("/auth/**").permitAll()
 				//除上面外的所有请求全部需要鉴权认证
 				.anyRequest().authenticated();
 		//添加JWT filter
@@ -72,10 +90,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.headers().cacheControl();
 	}
 
-	@Bean
-	public JwtAuthenticationTokenFilter authenticationTokenFilterBean() throws Exception {
-		return new JwtAuthenticationTokenFilter();
-	}
+
 
 
 

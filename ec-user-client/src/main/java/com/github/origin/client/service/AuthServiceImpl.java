@@ -72,6 +72,8 @@ public class AuthServiceImpl implements AuthService {
 
 	@Override
 	public String login(String username, String password) throws Exception{
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		password = encoder.encode(password);
 		UsernamePasswordAuthenticationToken upToken =
 				new UsernamePasswordAuthenticationToken(username, password);
 		//登陆验证时，通过username获取用户的所有权限信息，
