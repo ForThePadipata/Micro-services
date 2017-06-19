@@ -5,9 +5,18 @@ server:
   port: 7001
 # 配置服务注册中心
 eureka:
+  # 在注册中心显示IP
+  instance:
+    hostname: peer1
+    preferIpAddress: true
+    # 在注册中心中显示的格式
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    metadata-map:
+      user.name: ${security.user.name}
+      user.password: ${security.user.password}
   client:
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://admin:${REGISTRY_SERVER_PASSWORD:password}@peer1:1111/eureka/
 
 # 在注册中心显示IP
 #eureka.instance.preferIpAddress=true
