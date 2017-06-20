@@ -26,3 +26,5 @@ padipata-ec-sleuth-zipkin/target/
 ec-user-client/target/
 
 ec-user-server/target/
+
+ec-spring-boot-admin/target/
