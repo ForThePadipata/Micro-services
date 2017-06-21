@@ -18,6 +18,8 @@ eureka:
       defaultZone: http://admin:${REGISTRY_SERVER_PASSWORD:password}@peer1:1111/eureka/
 #开启Feign对请求与响应进行GZIP压缩，减少通信性能损耗
 feign:
+  okhttp: #使用OkHttpClient来进行通信 默认通信方式HttpURLConnection不完善
+    enabled: true #当请求的错误码为401\407时，会关闭请求流，无法写入错误信息
   compression:
     reqest:
       enabled: true
@@ -61,6 +63,7 @@ jwt:
       path: auth
       refresh: refresh
       register: "auth/register"
+management.security.enabled: false
 
 
 

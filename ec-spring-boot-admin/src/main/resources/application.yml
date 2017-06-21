@@ -12,7 +12,7 @@ spring:
         endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
       turbine:
         clusters: default
-        location: http://ec-spring-admin:${turbine.stream.port}
+        location: http://${spring.cloud.client.ipAddress}:${turbine.stream.port}
 server:
   port: 8040
 turbine:
@@ -35,7 +35,9 @@ security:
   user:
     name: admin
     password: ${MONITOR_SERVER_PASSWORD:admin}
-
+logging:
+  level:
+    org.springframework.cloud.netflix.zuul.filters.post.SendErrorFilter: error
 
 
 

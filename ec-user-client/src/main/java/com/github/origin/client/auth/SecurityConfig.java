@@ -77,7 +77,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/favicon.ico",
 						"/**/*.html",
 						"/**/*.css",
-						"/**/*.js"
+						"/**/*.js",
+						//客户端状态收集链接开放
+						"/metrics",
+						"/health",
+						"/info",
+						"/trace"
 				).permitAll()
 				//对于获取token的rest api要允许匿名访问
 				.antMatchers("/auth/**").permitAll()
