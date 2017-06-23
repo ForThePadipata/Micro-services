@@ -82,7 +82,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/metrics",
 						"/health",
 						"/info",
-						"/trace"
+						"/trace",
+						"/env",
+						"/jolokia",
+						"/logfile",
+						"/liquibase",
+						"/heapdump",
+						"/auditevents",
+						"/dump"
 				).permitAll()
 				//对于获取token的rest api要允许匿名访问
 				.antMatchers("/auth/**").permitAll()

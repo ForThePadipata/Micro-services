@@ -32,7 +32,7 @@ hystrix:
 # 续约到期时间（默认90秒）
 #eureka.instance.lease-expiration-duration-in-seconds=10
 management.security.enabled: false
-
+info.version: @project.version@
 
 
 

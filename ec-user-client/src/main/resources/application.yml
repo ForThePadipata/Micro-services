@@ -64,7 +64,7 @@ jwt:
       refresh: refresh
       register: "auth/register"
 management.security.enabled: false
-
+info.version: @project.version@
 
 
 
