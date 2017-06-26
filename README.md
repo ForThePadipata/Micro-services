@@ -11,10 +11,10 @@ Micro-services是一个基于Spring cloud(Dalston.SR1) Spring Boot(1.5.4.RELEASE
 | ---------------------------------------- | ---- | ---------------------- | --------------- |
 | api-gateway                | 5555 | 服务网关           | 无           |
 | config-client               | 7003 | 配置中心客户端               | 无          |
-| config-repo               | 无 | 公共实体对象      
+| config-repo               | 无 | 配置文件
 | config-server              | 7001 | 服务配置中心
 | ec-auth-server               | 无 | 授权服务器     
-| ec-compute-server               | 2224 | 后台管理类
+| ec-compute-server               | 2224 | 后台管理服务生产者
 | ec-entity               | 无 | 公共实体对象
 | ec-eureka-server               | 1111 | 服务注册中心
 | ec-monitoring               | 8999 | 服务监控Turbine + HystrixDashboard
