@@ -1,10 +1,10 @@
 ## 基于Spring Cloud 搭建的一套架构
 ------
 ## 技术架构
-Micro-services是一个基于Spring cloud(Dalston.SR1) Spring Boot(1.5.4.RELEASE)的一个基础组件架构，
-使用了Spring Cloud Eureka、Feign、Zuul、Spring config、Zipkin、Sleuth、Hystrix Turbine、Hystrix Dashboard等Spring cloud组件
-使用了前后端分离 前端放在服务网关中 
-权限管理使用 jwt + spring security
+Micro-services是一个基于Spring cloud(Dalston.SR1) Spring Boot(1.5.4.RELEASE)的一个基础组件架构\<br/>
+使用了Spring Cloud Eureka、Feign、Zuul、Spring config、Zipkin、Sleuth、Hystrix Turbine、Hystrix Dashboard等Spring cloud组件\<br/>
+使用了前后端分离 前端放在服务网关中\<br/>
+权限管理使用 jwt + spring security\<br/>
 ## MAVEN模块说明
 #### 1. 基础组件说明
 | 项目名称                                     | 端口   | 描述                     | URL             |
