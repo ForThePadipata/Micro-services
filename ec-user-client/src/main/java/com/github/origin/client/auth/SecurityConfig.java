@@ -78,6 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/**/*.html",
 						"/**/*.css",
 						"/**/*.js",
+						"/main",
 						//客户端状态收集链接开放
 						"/metrics",
 						"/health",

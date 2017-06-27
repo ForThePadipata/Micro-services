@@ -29,7 +29,7 @@ public class AuthController {
 	private AuthService authService;
 
 	@RequestMapping(value = "${jwt.route.authentication.path}", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest)
+	public ResponseEntity<?> createAuthenticationToken(JwtAuthenticationRequest authenticationRequest)
 		throws Exception{
 
 		final String token = authService.login(authenticationRequest.getUsername(),
