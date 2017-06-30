@@ -116,6 +116,11 @@ public class JwtTokenUtil implements Serializable {
 		return (lastPasswordReset != null && created.before(lastPasswordReset));
 	}
 
+	/**
+	 * 根据用户信息创建令牌
+	 * @param userDetails
+	 * @return
+	 */
 	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<>();
 		claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
