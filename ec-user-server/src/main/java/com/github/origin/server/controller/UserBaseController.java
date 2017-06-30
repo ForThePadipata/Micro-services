@@ -54,7 +54,7 @@ public class UserBaseController {
 		List<String> roleList = new ArrayList<String>();
 		roleList.add("ROLE_ADMIN");
 		roleList.add("ROLE_USER");
-		ud.setRoles(roleList);
+		ud.setRoles("ROLE_ADMIN");
 		cm.setDataObject(ud);
 
 		return cm;
@@ -72,7 +72,7 @@ public class UserBaseController {
 		List<String> roleList = new ArrayList<String>();
 		roleList.add("ROLE_ADMIN");
 		roleList.add("ROLE_USER");
-		ud.setRoles(roleList);
+		ud.setRoles("ROLE_ADMIN");
 		cm.setDataObject(ud);
 
 		return cm;

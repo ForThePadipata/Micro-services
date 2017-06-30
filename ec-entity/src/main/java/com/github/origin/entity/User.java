@@ -1,5 +1,6 @@
 package com.github.origin.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
@@ -18,6 +19,12 @@ public class User {
 
 	private String password;
 
-	private List<String> roles;
+	private String mobile;
+
+	private String email;
+
+	private Date lastPasswordResetDate;
+
+	private String roles;
 
 }

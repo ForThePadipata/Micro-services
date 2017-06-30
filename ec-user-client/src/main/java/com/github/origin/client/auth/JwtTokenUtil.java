@@ -14,10 +14,10 @@ import java.util.Map;
 
 /**
  * Created by Zhu on 2017/6/12.
+ * JWT Token处理 工具类
  */
 @Component
 public class JwtTokenUtil implements Serializable {
-
 
 	private static final String CLAIM_KEY_USERNAME = "sub";
 	private static final String CLAIM_KEY_CREATED = "created";
@@ -28,6 +28,11 @@ public class JwtTokenUtil implements Serializable {
 	@Value("${jwt.expiration}")
 	private Long expiration;
 
+	/**
+	 * 从令牌中获取去用户名
+	 * @param token
+	 * @return
+	 */
 	public String getUsernameFromToken(String token) {
 		String username;
 		try {
@@ -39,6 +44,11 @@ public class JwtTokenUtil implements Serializable {
 		return username;
 	}
 
+	/**
+	 * 获取令牌创建时间
+	 * @param token
+	 * @return
+	 */
 	public Date getCreatedDateFromToken(String token) {
 		Date created;
 		try {
@@ -50,6 +60,11 @@ public class JwtTokenUtil implements Serializable {
 		return created;
 	}
 
+	/**
+	 * 获取令牌过期时间
+	 * @param token
+	 * @return
+	 */
 	public Date getExpirationDateFromToken(String token) {
 		Date expiration;
 		try {
@@ -61,6 +76,11 @@ public class JwtTokenUtil implements Serializable {
 		return expiration;
 	}
 
+	/**
+	 * 获取令牌请求信息
+	 * @param token
+	 * @return
+	 */
 	private Claims getClaimsFromToken(String token) {
 		Claims claims;
 		try {
@@ -74,10 +94,19 @@ public class JwtTokenUtil implements Serializable {
 		return claims;
 	}
 
+	/**
+	 * 令牌过期时间
+	 * @return
+	 */
 	private Date generateExpirationDate() {
 		return new Date(System.currentTimeMillis() + expiration * 1000);
 	}
 
+	/**
+	 * 判断令牌是否过期
+	 * @param token
+	 * @return
+	 */
 	private Boolean isTokenExpired(String token) {
 		final Date expiration = getExpirationDateFromToken(token);
 		return expiration.before(new Date());
@@ -94,6 +123,11 @@ public class JwtTokenUtil implements Serializable {
 		return generateToken(claims);
 	}
 
+	/**
+	 * 生成令牌
+	 * @param claims
+	 * @return
+	 */
 	String generateToken(Map<String, Object> claims) {
 		return Jwts.builder()
 				.setClaims(claims)
@@ -108,6 +142,11 @@ public class JwtTokenUtil implements Serializable {
 				&& !isTokenExpired(token);
 	}
 
+	/**
+	 * 刷新令牌
+	 * @param token
+	 * @return
+	 */
 	public String refreshToken(String token) {
 		String refreshedToken;
 		try {
@@ -120,6 +159,12 @@ public class JwtTokenUtil implements Serializable {
 		return refreshedToken;
 	}
 
+	/**
+	 * 校验令牌
+	 * @param token
+	 * @param userDetails
+	 * @return
+	 */
 	public Boolean validateToken(String token, UserDetails userDetails) {
 		JwtUser user = (JwtUser) userDetails;
 		final String username = getUsernameFromToken(token);

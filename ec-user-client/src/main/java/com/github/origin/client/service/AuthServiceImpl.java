@@ -62,7 +62,7 @@ public class AuthServiceImpl implements AuthService {
 		final String rawPassword = userToAdd.getPassword();
 		userToAdd.setPassword(encoder.encode(rawPassword));
 		//userToAdd.setLastPasswordResetDate(new Date());
-		userToAdd.setRoles(asList("ROLE_USER"));
+		userToAdd.setRoles("ROLE_USER");
 
 		CommonModel<User> cm = userClient.regist(userToAdd);
 

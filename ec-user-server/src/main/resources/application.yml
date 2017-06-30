@@ -7,6 +7,12 @@ spring:
     config:
       name: config-server
       uri: http://localhost:7001/
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 888888
+    driver-class-name: org.postgresql.Driver
 eureka:
   # 在注册中心显示IP
   instance:
@@ -34,5 +40,8 @@ hystrix:
 management.security.enabled: false
 info.version: @project.version@
 
-
+#mybatis config
+mybatis:
+  typeAliasesPackage: com.github.origin.entity
+  mapperLocations: classpath:mapper/*.xml
 
