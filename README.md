@@ -26,7 +26,9 @@ Micro-services是一个基于Spring cloud(Dalston.SR1) Spring Boot(1.5.4.RELEASE
 ------
 
 
+##系统架构图
 
+![image](https://github.com/ForThePadipata/Micro-services/blob/master/image/springcloud.png)
 
 
 
